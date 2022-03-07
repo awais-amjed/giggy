@@ -1,1 +1,1 @@
-# second-capstone
+# Starting Point for Giggy

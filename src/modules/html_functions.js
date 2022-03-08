@@ -13,7 +13,24 @@ const colorsArray = [
   '#3E978B',
 ];
 
+const shuffle = (array) => {
+  // Function to shuffle the contents of an array
+
+  let currentIndex = array.length;
+  let randomIndex;
+
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+  return array;
+};
+
 const populateJokes = async ({ category = 'Dark' }) => {
+  // Populates the Jokes array based on the Category passed.
+
   const jokesListNode = document.getElementById('jokes-list');
   jokesListNode.innerHTML = `
     <div class="loading-image col-12">
@@ -21,6 +38,7 @@ const populateJokes = async ({ category = 'Dark' }) => {
     </div>
   `;
 
+  const newColors = shuffle(colorsArray);
   let jokes = [];
 
   if (category === 'Dark') {
@@ -38,7 +56,7 @@ const populateJokes = async ({ category = 'Dark' }) => {
 
     const jokeNode = document.createElement('div');
     jokeNode.classList.add('joke-card');
-    jokeNode.style['background-color'] = colorsArray[i];
+    jokeNode.style['background-color'] = newColors[i];
 
     jokeContainer.appendChild(jokeNode);
     jokeNode.innerHTML = `

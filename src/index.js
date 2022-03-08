@@ -1,4 +1,4 @@
 import './style.css';
-import JokeAPI from './modules/joke_api.js';
+import populateJokes from './modules/html_functions.js';
 
-JokeAPI.getJokes(JokeAPI.jokeCategories.dark).then((value) => console.log(value));
+populateJokes({ category: 'Dark' });

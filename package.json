@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "webpack.config.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+   "scripts": {
+     "test": "jest --coverage",
+     "build": "webpack",
+     "dev": "webpack serve"
+   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/awais-amjed/giggy.git"

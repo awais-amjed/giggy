@@ -42,9 +42,9 @@ const populateJokes = async ({ category = 'Dark' }) => {
   let jokes = [];
 
   if (category === 'Dark') {
-    jokes = await JokeAPI.getJokes(JokeAPI.jokeCategories.dark);
+    jokes = await JokeAPI.getJokes({ category: JokeAPI.jokeCategories.dark });
   } else if (category === 'Programming') {
-    jokes = await JokeAPI.getJokes(JokeAPI.jokeCategories.programming);
+    jokes = await JokeAPI.getJokes({ category: JokeAPI.jokeCategories.programming });
   }
 
   jokesListNode.innerHTML = '';
@@ -75,4 +75,26 @@ const populateJokes = async ({ category = 'Dark' }) => {
   });
 };
 
-export default populateJokes;
+const darkJokesButtonListener = async () => {
+  const darkJokesButton = document.getElementById('dark-jokes-button');
+  if (darkJokesButton.classList.contains('active') === true) {
+    return;
+  }
+
+  document.getElementById('programming-jokes-button').classList.remove('active');
+  darkJokesButton.classList.add('active');
+  await populateJokes({ category: 'Dark' });
+};
+
+const programmingJokesButtonListener = async () => {
+  const programmingJokesButton = document.getElementById('programming-jokes-button');
+  if (programmingJokesButton.classList.contains('active') === true) {
+    return;
+  }
+
+  document.getElementById('dark-jokes-button').classList.remove('active');
+  programmingJokesButton.classList.add('active');
+  await populateJokes({ category: 'Programming' });
+};
+
+export { populateJokes, darkJokesButtonListener, programmingJokesButtonListener };

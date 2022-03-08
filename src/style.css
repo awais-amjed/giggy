@@ -35,14 +35,13 @@ a:hover {
 }
 
 #jokes-list {
-  margin: 50px;
+  margin: 30px 0 100px;
 }
 
 .joke-card {
   background-color: darkslategrey;
   color: white;
   display: flex;
-  width: 200px;
   flex-direction: column;
   align-items: center;
   box-shadow: 0 15px 30px 1px grey;
@@ -50,6 +49,10 @@ a:hover {
   padding: 30px;
   transition: 300ms;
   gap: 15px;
+}
+
+.joke-container {
+  padding: 15px;
 }
 
 .joke-card hr {
@@ -85,4 +88,10 @@ footer {
   width: 100%;
   height: 50px;
   justify-content: center;
+  align-items: center;
+}
+
+footer p {
+  padding: 0;
+  margin: 0;
 }

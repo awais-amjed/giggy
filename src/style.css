@@ -1,19 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins&display=swap');
+
 body {
   font-family: "League Spartan", sans-serif;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-inline: 10%;
+  background-color: antiquewhite;
 }
 
 header {
+  padding: 0 10%;
+  position: fixed;
+  z-index: 1;
   display: flex;
-  margin-top: 10px;
-  justify-content: center;
+  inset: 0;
+  justify-content: space-between;
   align-items: center;
+  height: 70px;
+  background-color: #bdbdbd;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
 }
 
 a {
   text-decoration: none;
-  margin-right: 5%;
 }
 
 footer a {
@@ -24,17 +31,90 @@ a:hover {
   text-decoration: underline;
 }
 
-.logo {
-  margin-right: 5%;
+button {
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: 3px solid black;
+  background-color: white;
+  box-shadow: 3px 3px black;
+  transition: 300ms;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+button:active {
+  transform: scale(0.9);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.logo-container .logo {
   width: 50px;
   height: 50px;
-  background: url(./img/logo.png);
+  background: url(img/logo.png);
   background-size: contain;
-  border-radius: 50%;
   cursor: pointer;
 }
 
+.logo-container h1 {
+  font-family: 'Permanent Marker', cursive;
+}
+
+.navigation-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.active {
+  background-color: black;
+  color: white;
+}
+
+#jokes-list {
+  margin: 100px 0 100px;
+}
+
+.joke-card {
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 15px 30px 1px grey;
+  border-radius: 10px;
+  padding: 30px;
+  transition: 300ms;
+  gap: 15px;
+}
+
+.joke-container {
+  padding: 15px;
+}
+
+.joke-card hr {
+  width: 100%;
+}
+
+.joke-text {
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.joke-card:hover {
+  transform: scale(1.05);
+}
+
 footer {
+  z-index: 1;
   background-color: #bdbdbd;
   position: fixed;
   bottom: 0;
@@ -43,5 +123,20 @@ footer {
   display: flex;
   width: 100%;
   height: 50px;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 -4px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+  padding: 0;
+  margin: 0;
+}
+
+.loading-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 80vh;
   justify-content: center;
 }

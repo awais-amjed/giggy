@@ -39,7 +39,7 @@ a:hover {
 }
 
 .joke-card {
-  background-color: darkslategrey;
+  background-color: black;
   color: white;
   display: flex;
   flex-direction: column;
@@ -65,10 +65,19 @@ a:hover {
   border: 3px solid black;
   background-color: white;
   box-shadow: 3px 3px black;
+  transition: 300ms;
+}
+
+.joke-card button:hover {
+  transform: scale(1.1);
+}
+
+.joke-card button:active {
+  transform: scale(0.9);
 }
 
 .joke-text {
-  height: 180px;
+  min-height: 180px;
   display: flex;
   flex-direction: column;
   justify-content: center;

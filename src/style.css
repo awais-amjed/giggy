@@ -34,6 +34,26 @@ a:hover {
   cursor: pointer;
 }
 
+#jokes-list {
+  margin: 50px;
+}
+
+.joke-card {
+  color: white;
+}
+
+.joke-background {
+  background-color: darkslategrey;
+  border-radius: 10px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 200px;
+  width: 200px;
+  box-shadow: 5px 8px rgba(0, 0, 0, 0.3);
+}
+
 footer {
   background-color: #bdbdbd;
   position: fixed;

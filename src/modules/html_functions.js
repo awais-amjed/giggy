@@ -17,7 +17,7 @@ const populateJokes = async ({ category = 'Dark' }) => {
   const jokesListNode = document.getElementById('jokes-list');
   jokesListNode.innerHTML = `
     <div class="loading-image col-12">
-        <img src="./img/loading.gif" alt="">
+        <img src="./img/loading.gif" alt="" height="200px">
     </div>
   `;
 

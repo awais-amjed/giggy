@@ -14,6 +14,13 @@ const colorsArray = [
 ];
 
 const populateJokes = async ({ category = 'Dark' }) => {
+  const jokesListNode = document.getElementById('jokes-list');
+  jokesListNode.innerHTML = `
+    <div class="loading-image col-12">
+        <img src="./img/loading.gif" alt="">
+    </div>
+  `;
+
   let jokes = [];
 
   if (category === 'Dark') {
@@ -21,6 +28,8 @@ const populateJokes = async ({ category = 'Dark' }) => {
   } else if (category === 'Programming') {
     jokes = await JokeAPI.getJokes(JokeAPI.jokeCategories.programming);
   }
+
+  jokesListNode.innerHTML = '';
 
   let i = 0;
   jokes.forEach(({ setup, delivery, joke }) => {
@@ -43,7 +52,7 @@ const populateJokes = async ({ category = 'Dark' }) => {
     commentsButton.innerText = 'Comments';
 
     jokeNode.appendChild(commentsButton);
-    document.getElementById('jokes-list').appendChild(jokeContainer);
+    jokesListNode.appendChild(jokeContainer);
     i += 1;
   });
 };

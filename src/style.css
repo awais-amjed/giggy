@@ -39,19 +39,40 @@ a:hover {
 }
 
 .joke-card {
-  color: white;
-}
-
-.joke-background {
   background-color: darkslategrey;
+  color: white;
+  display: flex;
+  width: 200px;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 15px 30px 1px grey;
   border-radius: 10px;
   padding: 30px;
+  transition: 300ms;
+  gap: 15px;
+}
+
+.joke-card hr {
+  width: 100%;
+}
+
+.joke-card button {
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: 3px solid black;
+  background-color: white;
+  box-shadow: 3px 3px black;
+}
+
+.joke-text {
+  height: 180px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 200px;
-  width: 200px;
-  box-shadow: 5px 8px rgba(0, 0, 0, 0.3);
+}
+
+.joke-card:hover {
+  transform: scale(1.05);
 }
 
 footer {

@@ -91,10 +91,10 @@ const populateJokes = async ({ category = 'Dark' }) => {
   let i = 0;
   jokes.forEach((joke) => {
     const jokeContainer = document.createElement('div');
-    jokeContainer.classList.add('joke-container', 'col-lg-4', 'col-md-6', 'col-xxl-3');
+    jokeContainer.classList.add('joke-container', 'col-lg-4', 'col-md-6', 'col-xxl-3', 'animate__animated', 'animate__zoomIn');
 
     const jokeNode = document.createElement('div');
-    jokeNode.classList.add('joke-card', 'animate__animated', 'animate__zoomIn');
+    jokeNode.classList.add('joke-card');
     const color = newColors[i];
     jokeNode.style['background-color'] = color;
 

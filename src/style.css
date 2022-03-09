@@ -147,3 +147,15 @@ footer {
   height: 80vh;
   justify-content: center;
 }
+
+@media (max-width: 600px) {
+  header {
+    height: 140px;
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  #jokes-list {
+    margin: 160px 0 100px;
+  }
+}

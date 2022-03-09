@@ -95,7 +95,7 @@ const heartButtonListener = async ({ likesContainer = null, id = null }) => {
   }
 };
 
-const populateJokes = async ({ category = 'Dark' }) => {
+const populateJokes = async ({ category = 'Dark', getLikes = false }) => {
   // Populates the Jokes array based on the Category passed.
 
   const jokesListNode = document.getElementById('jokes-list');
@@ -104,6 +104,10 @@ const populateJokes = async ({ category = 'Dark' }) => {
         <img src="./img/loading.gif" alt="" height="200px">
     </div>
   `;
+
+  if (getLikes === true) {
+    await InvolvementAPI.getLikes();
+  }
 
   const newColors = shuffle(colorsArray);
   let jokes = [];

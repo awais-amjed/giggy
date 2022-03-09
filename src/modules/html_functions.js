@@ -33,7 +33,12 @@ const shuffle = (array) => {
 const countAllItems = () => document.getElementById('jokes-list').querySelectorAll('.joke-card').length;
 
 const showJokeCount = () => {
-  document.getElementById('joke-count').innerHTML = `Jokes Count: ${countAllItems()}`;
+  const jokeCount = document.getElementById('joke-count');
+  jokeCount.classList.remove('animate__zoomIn');
+  setTimeout(() => {
+    document.getElementById('joke-count').innerHTML = `Jokes Count: ${countAllItems()}`;
+    jokeCount.classList.add('animate__zoomIn');
+  }, 1);
 };
 
 export const showPopup = (error) => {

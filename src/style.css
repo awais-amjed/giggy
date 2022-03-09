@@ -1,32 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins&display=swap");
+
 body {
   font-family: "League Spartan", sans-serif;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-inline: 10%;
+  background-color: antiquewhite;
 }
 
 header {
+  padding: 0 10%;
+  position: fixed;
+  z-index: 1;
   display: flex;
-  margin-top: 10px;
-  justify-content: center;
+  inset: 0;
+  justify-content: space-between;
   align-items: center;
+  height: 70px;
+  background-color: #bdbdbd;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
 }
 
 a {
   text-decoration: none;
-  margin-right: 5%;
+}
+
+footer a {
+  margin: 5px;
 }
 
 a:hover {
   text-decoration: underline;
 }
 
-.logo {
-  margin-right: 5%;
+button {
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: 3px solid black;
+  background-color: white;
+  box-shadow: 3px 3px black;
+  transition: 300ms;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+button:active {
+  transform: scale(0.9);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.logo-container .logo {
   width: 50px;
   height: 50px;
-  background: url(./img/logo.png);
+  background: url(img/logo.png);
   background-size: contain;
-  border-radius: 50%;
   cursor: pointer;
 }
 
@@ -51,6 +83,8 @@ a:hover {
   width: 80%;
   height: 80vh;
   border-radius: 20px;
+  max-width: 1000px;
+  overflow-y: auto;
 }
 
 .close-btn {
@@ -67,12 +101,11 @@ a:hover {
   cursor: pointer;
 }
 
-.joke-card {
+.comments-joke-card {
   border-radius: 20px;
   background-color: beige;
   width: 60%;
-  height: 30%;
-  margin: auto;
+  margin: 50px auto;
 }
 
 .joke {
@@ -86,52 +119,173 @@ a:hover {
 
 .info-text {
   text-align: center;
+  color: #fefefe;
 }
 
-#joke-title {
+.joke-title {
   text-align: center;
   margin: 10px;
   font-size: 28px;
   font-weight: 500;
   align-self: flex-start;
+  color: #fefefe;
 }
 
 .info-card {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  width: 60%;
+  align-items: center;
+  margin: auto;
 }
 
 ul {
   list-style: none;
   text-align: center;
   margin: 20px;
+  color: white;
 }
 
 li {
   margin-top: 10px;
+  color: #fefefe;
 }
 
 form {
   display: flex;
   flex-direction: column;
   margin: auto;
+  justify-content: center;
+  align-items: center;
 }
 
 input {
   margin: 10px;
   border-radius: 5px;
   height: 35px;
+  border: 3px solid black;
+  padding: 10px 15px;
+  width: 300px;
 }
 
 textarea {
   margin: 10px;
   border-radius: 5px;
+  border: 3px solid black;
+  padding: 10px 15px;
+  width: 300px;
 }
 
 form button {
   height: 35px;
-  width: 25%;
+  width: 200px;
   border-radius: 5px;
   margin: 10px;
   cursor: pointer;
+  margin-bottom: 50px;
+}
+
+.logo-container h1 {
+  font-family: "Permanent Marker", cursive;
+}
+
+.navigation-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.active {
+  background-color: black;
+  color: white;
+}
+
+#jokes-list {
+  margin: 100px 0 100px;
+}
+
+.joke-card {
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 15px 30px 1px grey;
+  border-radius: 10px;
+  padding: 30px;
+  transition: 300ms;
+  gap: 15px;
+}
+
+.joke-container {
+  padding: 15px;
+}
+
+.joke-card hr {
+  width: 100%;
+}
+
+.joke-text {
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.joke-card:hover {
+  transform: scale(1.05);
+}
+
+footer {
+  z-index: 1;
+  background-color: #bdbdbd;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  width: 100%;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 -4px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+  padding: 0;
+  margin: 0;
+}
+
+.loading-image,
+.loading-image-comment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 80vh;
+  justify-content: center;
+}
+
+.loading-image-comment {
+  height: 10vh;
+}
+
+@media (max-width:768px) {
+  .comment-content {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+  }
+
+  .joke {
+    font-size: 24px;
+  }
+
+  .comments-joke-card {
+    width: 80%;
+  }
+
+  .info-card {
+    width: 90%;
+  }
 }

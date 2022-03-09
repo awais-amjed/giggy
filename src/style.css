@@ -40,6 +40,15 @@ button {
   transition: 300ms;
 }
 
+form button {
+  height: 35px;
+  width: 200px;
+  border-radius: 5px;
+  margin: 10px;
+  cursor: pointer;
+  margin-bottom: 50px;
+}
+
 button:hover {
   transform: scale(1.1);
 }
@@ -88,7 +97,7 @@ button:active {
 }
 
 .close-btn {
-  color: #aaaaaa;
+  color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
@@ -175,15 +184,6 @@ textarea {
   border: 3px solid black;
   padding: 10px 15px;
   width: 300px;
-}
-
-form button {
-  height: 35px;
-  width: 200px;
-  border-radius: 5px;
-  margin: 10px;
-  cursor: pointer;
-  margin-bottom: 50px;
 }
 
 .logo-container h1 {

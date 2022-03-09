@@ -1,7 +1,7 @@
 export default class Comments {
   baseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
 
-  appId = 'rIad9hF9lO1yv2bMdKPx'; //'UDoWa8zVty29gxAuSZ13';
+  appId = 'UDoWa8zVty29gxAuSZ13';
 
   comments = [];
 

@@ -29,6 +29,19 @@ const shuffle = (array) => {
   return array;
 };
 
+const heartButtonListener = async ({ heartButton = null, id = null }) => {
+  // Increases the like amount of an item by 1
+  if (heartButton === null || id === null) {
+    return;
+  }
+
+  if (!heartButton.classList.contains('is-heart-active')) {
+    heartButton.classList.add('is-heart-active');
+    await InvolvementAPI.postLike({ itemID: id });
+    await InvolvementAPI.getLikes();
+  }
+};
+
 const populateJokes = async ({ category = 'Dark' }) => {
   // Populates the Jokes array based on the Category passed.
 
@@ -70,9 +83,14 @@ const populateJokes = async ({ category = 'Dark' }) => {
         <hr>
         <div class="likes-container">
             <p>${currentItem ? currentItem.likes : 0} Likes</p>
+            <div class="heart"></div>
         </div>
       </div>
     `;
+    const heartButton = jokeNode.querySelector('.heart');
+    heartButton.addEventListener('click', () => {
+      heartButtonListener({ heartButton, id });
+    });
 
     const commentsButton = document.createElement('button');
     commentsButton.innerText = 'Comments';

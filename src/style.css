@@ -120,6 +120,26 @@ button:active {
   font-weight: bold;
 }
 
+.heart {
+  width: 100px;
+  height: 80px;
+  background: url("https://cssanimation.rocks/images/posts/steps/heart.png");
+  background-size: auto;
+  cursor: pointer;
+  transition: background-position 1s steps(28);
+  transition-duration: 0s;
+  transform: translate(20px, -30px);
+}
+
+.is-heart-active {
+  transition-duration: 1s;
+  background-position: -2800px 0;
+}
+
+.joke-card:hover {
+  transform: scale(1.05);
+}
+
 .likes-container p {
   margin-top: 10px;
   letter-spacing: 2px;

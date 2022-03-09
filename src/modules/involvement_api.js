@@ -4,6 +4,8 @@ export default class InvolvementAPI {
   // static appID = 'UDoWa8zVty29gxAuSZ13';
   static appID = 'rIad9hF9lO1yv2bMdKPx';
 
+  static itemLikes = [];
+
   static postLike = async ({ itemID = null }) => {
     if (itemID === null) {
       return null;
@@ -25,9 +27,10 @@ export default class InvolvementAPI {
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
     },
-  }).then((response) => {
+  }).then(async (response) => {
     if (response.status === 200) {
-      return response.json();
+      this.itemLikes = await response.json();
+      return true;
     }
     return null;
   });

@@ -5,15 +5,12 @@ import InvolvementAPI from './modules/involvement_api.js';
 
 import './img/loading.gif';
 
-populateJokes({ category: 'Dark' });
-
-const meow = async () => {
-  const temp = await InvolvementAPI.postLike({ itemID: 31 });
-  console.log(temp);
-  console.log((await InvolvementAPI.getLikes()));
+const init = async () => {
+  await InvolvementAPI.getLikes();
+  await populateJokes({ category: 'Dark' });
 };
 
-meow();
+init();
 
 document.getElementById('dark-jokes-button').addEventListener('click', darkJokesButtonListener);
 document.getElementById('programming-jokes-button').addEventListener('click', programmingJokesButtonListener);

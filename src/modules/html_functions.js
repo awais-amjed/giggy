@@ -30,16 +30,30 @@ const shuffle = (array) => {
   return array;
 };
 
-const heartButtonListener = async ({ heartButton = null, id = null }) => {
+const updateItemLikes = ({ likesContainer = null, id = null }) => {
   // Increases the like amount of an item by 1
-  if (heartButton === null || id === null) {
+  if (likesContainer === null || id === null) {
     return;
   }
 
+  const currentItem = InvolvementAPI.itemLikes.find((item) => item.item_id === id);
+  currentItem.likes += 1;
+  likesContainer.querySelector('p').innerHTML = `${currentItem.likes} Likes`;
+};
+
+const heartButtonListener = async ({ likesContainer = null, id = null }) => {
+  // Update the number of likes of an Item & Save it to Cloud
+  if (likesContainer === null || id === null) {
+    return;
+  }
+
+  const heartButton = likesContainer.querySelector('.heart');
   if (!heartButton.classList.contains('is-heart-active')) {
     heartButton.classList.add('is-heart-active');
-    await InvolvementAPI.postLike({ itemID: id });
-    await InvolvementAPI.getLikes();
+    const isAdded = await InvolvementAPI.postLike({ itemID: id });
+    if (isAdded === true) {
+      updateItemLikes({ likesContainer, id });
+    }
   }
 };
 
@@ -87,9 +101,9 @@ const populateJokes = async ({ category = 'Dark' }) => {
         </div>
       </div>
     `;
-    const heartButton = jokeNode.querySelector('.heart');
-    heartButton.addEventListener('click', () => {
-      heartButtonListener({ heartButton, id });
+    const likesContainer = jokeNode.querySelector('.likes-container');
+    likesContainer.querySelector('.heart').addEventListener('click', () => {
+      heartButtonListener({ likesContainer, id: joke.id });
     });
 
     const commentsButton = document.createElement('button');

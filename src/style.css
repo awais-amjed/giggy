@@ -27,6 +27,11 @@ footer a {
   margin: 5px;
 }
 
+footer p {
+  padding: 0;
+  margin: 0;
+}
+
 a:hover {
   text-decoration: underline;
 }
@@ -91,7 +96,6 @@ button:active {
   border-radius: 10px;
   padding: 30px;
   transition: 300ms;
-  gap: 15px;
 }
 
 .joke-container {
@@ -103,14 +107,22 @@ button:active {
 }
 
 .joke-text {
-  min-height: 180px;
+  min-height: 250px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.joke-card:hover {
-  transform: scale(1.05);
+.likes-container {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+  font-weight: bold;
+}
+
+.likes-container p {
+  margin-top: 10px;
+  letter-spacing: 2px;
 }
 
 footer {
@@ -128,15 +140,22 @@ footer {
   box-shadow: 0 -4px 4px 0 rgba(0, 0, 0, 0.1);
 }
 
-footer p {
-  padding: 0;
-  margin: 0;
-}
-
 .loading-image {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 80vh;
   justify-content: center;
+}
+
+@media (max-width: 600px) {
+  header {
+    height: 140px;
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  #jokes-list {
+    margin: 160px 0 100px;
+  }
 }

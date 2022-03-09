@@ -4,6 +4,7 @@
 
 import * as htmlFunctions from '../modules/html_functions.js';
 
+// Mock Implementation of populateJokes Function
 jest.spyOn(htmlFunctions, 'populateJokes');
 htmlFunctions.populateJokes.mockImplementation(() => {
   const jokesListNode = document.getElementById('jokes-list');

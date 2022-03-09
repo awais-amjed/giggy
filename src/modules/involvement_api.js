@@ -1,4 +1,6 @@
 export default class InvolvementAPI {
+  // This class handles all calls to Involvement API
+
   static baseURL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps';
 
   // static appID = 'UDoWa8zVty29gxAuSZ13';

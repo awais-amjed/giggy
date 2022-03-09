@@ -297,6 +297,24 @@ footer {
   height: 10vh;
 }
 
+#popup {
+  display: none;
+  position: fixed;
+  padding: 15px;
+  z-index: 3;
+  bottom: 10px;
+  right: 10px;
+  background-color: #78127c;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+}
+
+#popup p {
+  margin: auto;
+  text-align: center;
+  color: white;
+}
+
 @media (max-width: 768px) {
   .comment-content {
     width: 100%;

@@ -30,6 +30,21 @@ const shuffle = (array) => {
   return array;
 };
 
+export const showPopup = (error) => {
+  const popup = document.getElementById('popup');
+  if (error) {
+    popup.querySelector('p').textContent = error;
+  }
+
+  popup.style.display = 'block';
+  popup.classList.remove('animate__slideOutRight');
+  popup.classList.add('animate__slideInRight');
+  setTimeout(() => {
+    popup.classList.remove('animate__slideInRight');
+    popup.classList.add('animate__slideOutRight');
+  }, 3000);
+};
+
 const updateItemLikes = async ({ likesContainer = null, id = null }) => {
   // Increases the like amount of an item by 1
   if (likesContainer === null || id === null) {
@@ -64,6 +79,8 @@ const heartButtonListener = async ({ likesContainer = null, id = null }) => {
     if (isAdded === true) {
       await updateItemLikes({ likesContainer, id });
     }
+  } else {
+    showPopup('We get it, You like this Joke. Move on now lol');
   }
 };
 

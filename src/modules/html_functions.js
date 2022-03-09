@@ -4,7 +4,7 @@ import InvolvementAPI from './involvement_api.js';
 
 const colorsArray = [
   '#005F99',
-  '#D22779',
+  '#172774',
   '#7900FF',
   '#1E3163',
   '#1DB9C3',
@@ -28,6 +28,60 @@ const shuffle = (array) => {
       array[randomIndex], array[currentIndex]];
   }
   return array;
+};
+
+export const showPopup = (error) => {
+  const popup = document.getElementById('popup');
+  if (error) {
+    popup.querySelector('p').textContent = error;
+  }
+
+  popup.style.display = 'block';
+  popup.classList.remove('animate__slideOutRight');
+  popup.classList.add('animate__slideInRight');
+  setTimeout(() => {
+    popup.classList.remove('animate__slideInRight');
+    popup.classList.add('animate__slideOutRight');
+  }, 3000);
+};
+
+const updateItemLikes = async ({ likesContainer = null, id = null }) => {
+  // Increases the like amount of an item by 1
+  if (likesContainer === null || id === null) {
+    return;
+  }
+
+  let currentItem = InvolvementAPI.itemLikes.find((item) => item.item_id === id);
+  if (!currentItem) {
+    await InvolvementAPI.getLikes();
+    currentItem = InvolvementAPI.itemLikes.find((item) => item.item_id === id);
+  } else {
+    currentItem.likes += 1;
+  }
+  likesContainer.querySelector('p').classList.remove('animate__headShake');
+  setTimeout(() => {
+    likesContainer.querySelector('p').classList.add('animate__zoomIn');
+  }, 1);
+  likesContainer.querySelector('p').innerHTML = `${currentItem.likes} Likes`;
+};
+
+const heartButtonListener = async ({ likesContainer = null, id = null }) => {
+  // Update the number of likes of an Item & Save it to Cloud
+  if (likesContainer === null || id === null) {
+    return;
+  }
+
+  const heartButton = likesContainer.querySelector('.heart');
+  if (!heartButton.classList.contains('is-heart-active')) {
+    heartButton.classList.add('is-heart-active');
+    likesContainer.querySelector('p').classList.add('animate__headShake');
+    const isAdded = await InvolvementAPI.postLike({ itemID: id });
+    if (isAdded === true) {
+      await updateItemLikes({ likesContainer, id });
+    }
+  } else {
+    showPopup('We get it, You like this Joke. Move on now lol');
+  }
 };
 
 const populateJokes = async ({ category = 'Dark' }) => {
@@ -54,7 +108,7 @@ const populateJokes = async ({ category = 'Dark' }) => {
   let i = 0;
   jokes.forEach((joke) => {
     const jokeContainer = document.createElement('div');
-    jokeContainer.classList.add('joke-container', 'col-lg-4', 'col-md-6', 'col-xxl-3');
+    jokeContainer.classList.add('joke-container', 'col-lg-4', 'col-md-6', 'col-xxl-3', 'animate__animated', 'animate__zoomIn');
 
     const jokeNode = document.createElement('div');
     jokeNode.classList.add('joke-card');
@@ -69,10 +123,15 @@ const populateJokes = async ({ category = 'Dark' }) => {
         ${joke.joke ? `<p>${joke.joke.replaceAll('\n', '<br>')}</p>` : `<p>${joke.setup}</p><p>${joke.delivery}</p>`}
         <hr>
         <div class="likes-container">
-            <p>${currentItem ? currentItem.likes : 0} Likes</p>
+            <p class="animate__animated">${currentItem ? currentItem.likes : 0} Likes</p>
+            <div class="heart"></div>
         </div>
       </div>
     `;
+    const likesContainer = jokeNode.querySelector('.likes-container');
+    likesContainer.querySelector('.heart').addEventListener('click', () => {
+      heartButtonListener({ likesContainer, id: joke.id });
+    });
 
     const commentsButton = document.createElement('button');
     commentsButton.innerText = 'Comments';

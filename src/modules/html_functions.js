@@ -43,6 +43,10 @@ const updateItemLikes = async ({ likesContainer = null, id = null }) => {
   } else {
     currentItem.likes += 1;
   }
+  likesContainer.querySelector('p').classList.remove('animate__headShake');
+  setTimeout(() => {
+    likesContainer.querySelector('p').classList.add('animate__zoomIn');
+  }, 1);
   likesContainer.querySelector('p').innerHTML = `${currentItem.likes} Likes`;
 };
 
@@ -55,15 +59,11 @@ const heartButtonListener = async ({ likesContainer = null, id = null }) => {
   const heartButton = likesContainer.querySelector('.heart');
   if (!heartButton.classList.contains('is-heart-active')) {
     heartButton.classList.add('is-heart-active');
-    likesContainer.querySelector('p').classList.add('animate__zoomOut');
+    likesContainer.querySelector('p').classList.add('animate__headShake');
     const isAdded = await InvolvementAPI.postLike({ itemID: id });
     if (isAdded === true) {
       await updateItemLikes({ likesContainer, id });
     }
-    likesContainer.querySelector('p').classList.remove('animate__zoomOut');
-    setTimeout(() => {
-      likesContainer.querySelector('p').classList.add('animate__zoomIn');
-    }, 10);
   }
 };
 
@@ -106,7 +106,7 @@ const populateJokes = async ({ category = 'Dark' }) => {
         ${joke.joke ? `<p>${joke.joke.replaceAll('\n', '<br>')}</p>` : `<p>${joke.setup}</p><p>${joke.delivery}</p>`}
         <hr>
         <div class="likes-container">
-            <p class="animate__animated animate__faster">${currentItem ? currentItem.likes : 0} Likes</p>
+            <p class="animate__animated">${currentItem ? currentItem.likes : 0} Likes</p>
             <div class="heart"></div>
         </div>
       </div>

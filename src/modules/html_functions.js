@@ -30,6 +30,17 @@ const shuffle = (array) => {
   return array;
 };
 
+const countAllItems = () => document.getElementById('jokes-list').querySelectorAll('.joke-card').length;
+
+const showJokeCount = () => {
+  const jokeCount = document.getElementById('joke-count');
+  jokeCount.classList.remove('animate__zoomIn');
+  setTimeout(() => {
+    document.getElementById('joke-count').innerHTML = `Jokes Count: ${countAllItems()}`;
+    jokeCount.classList.add('animate__zoomIn');
+  }, 1);
+};
+
 export const showPopup = (error) => {
   const popup = document.getElementById('popup');
   if (error) {
@@ -84,7 +95,7 @@ const heartButtonListener = async ({ likesContainer = null, id = null }) => {
   }
 };
 
-const populateJokes = async ({ category = 'Dark' }) => {
+const populateJokes = async ({ category = 'Dark', getLikes = false }) => {
   // Populates the Jokes array based on the Category passed.
 
   const jokesListNode = document.getElementById('jokes-list');
@@ -93,6 +104,10 @@ const populateJokes = async ({ category = 'Dark' }) => {
         <img src="./img/loading.gif" alt="" height="200px">
     </div>
   `;
+
+  if (getLikes === true) {
+    await InvolvementAPI.getLikes();
+  }
 
   const newColors = shuffle(colorsArray);
   let jokes = [];
@@ -140,6 +155,7 @@ const populateJokes = async ({ category = 'Dark' }) => {
     jokesListNode.appendChild(jokeContainer);
     i += 1;
   });
+  showJokeCount();
 };
 
 const darkJokesButtonListener = async () => {

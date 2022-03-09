@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import { populateJokes, darkJokesButtonListener, programmingJokesButtonListener } from './modules/html_functions.js';
 import InvolvementAPI from './modules/involvement_api.js';
+import 'animate.css';
 
 import './img/loading.gif';
 

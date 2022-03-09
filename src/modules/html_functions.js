@@ -30,6 +30,12 @@ const shuffle = (array) => {
   return array;
 };
 
+const countAllItems = () => document.getElementById('jokes-list').querySelectorAll('.joke-card').length;
+
+const showJokeCount = () => {
+  document.getElementById('joke-count').innerHTML = `Jokes Count: ${countAllItems()}`;
+};
+
 const populateJokes = async ({ category = 'Dark' }) => {
   // Populates the Jokes array based on the Category passed.
 
@@ -81,6 +87,7 @@ const populateJokes = async ({ category = 'Dark' }) => {
     jokesListNode.appendChild(jokeContainer);
     i += 1;
   });
+  showJokeCount();
 };
 
 const darkJokesButtonListener = async () => {

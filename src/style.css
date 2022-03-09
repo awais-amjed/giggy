@@ -79,8 +79,8 @@ button:active {
 .comment-pop {
   display: none;
   position: fixed;
-  z-index: 1;
-  padding-top: 100px;
+  z-index: 2;
+  padding-block: 20px;
   left: 0;
   top: 0;
   width: 100%;

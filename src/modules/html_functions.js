@@ -30,14 +30,19 @@ const shuffle = (array) => {
   return array;
 };
 
-const updateItemLikes = ({ likesContainer = null, id = null }) => {
+const updateItemLikes = async ({ likesContainer = null, id = null }) => {
   // Increases the like amount of an item by 1
   if (likesContainer === null || id === null) {
     return;
   }
 
-  const currentItem = InvolvementAPI.itemLikes.find((item) => item.item_id === id);
-  currentItem.likes += 1;
+  let currentItem = InvolvementAPI.itemLikes.find((item) => item.item_id === id);
+  if (!currentItem) {
+    await InvolvementAPI.getLikes();
+    currentItem = InvolvementAPI.itemLikes.find((item) => item.item_id === id);
+  } else {
+    currentItem.likes += 1;
+  }
   likesContainer.querySelector('p').innerHTML = `${currentItem.likes} Likes`;
 };
 
@@ -50,10 +55,15 @@ const heartButtonListener = async ({ likesContainer = null, id = null }) => {
   const heartButton = likesContainer.querySelector('.heart');
   if (!heartButton.classList.contains('is-heart-active')) {
     heartButton.classList.add('is-heart-active');
+    likesContainer.querySelector('p').classList.add('animate__zoomOut');
     const isAdded = await InvolvementAPI.postLike({ itemID: id });
     if (isAdded === true) {
-      updateItemLikes({ likesContainer, id });
+      await updateItemLikes({ likesContainer, id });
     }
+    likesContainer.querySelector('p').classList.remove('animate__zoomOut');
+    setTimeout(() => {
+      likesContainer.querySelector('p').classList.add('animate__zoomIn');
+    }, 10);
   }
 };
 
@@ -84,7 +94,7 @@ const populateJokes = async ({ category = 'Dark' }) => {
     jokeContainer.classList.add('joke-container', 'col-lg-4', 'col-md-6', 'col-xxl-3');
 
     const jokeNode = document.createElement('div');
-    jokeNode.classList.add('joke-card');
+    jokeNode.classList.add('joke-card', 'animate__animated', 'animate__zoomIn');
     const color = newColors[i];
     jokeNode.style['background-color'] = color;
 
@@ -96,7 +106,7 @@ const populateJokes = async ({ category = 'Dark' }) => {
         ${joke.joke ? `<p>${joke.joke.replaceAll('\n', '<br>')}</p>` : `<p>${joke.setup}</p><p>${joke.delivery}</p>`}
         <hr>
         <div class="likes-container">
-            <p>${currentItem ? currentItem.likes : 0} Likes</p>
+            <p class="animate__animated animate__faster">${currentItem ? currentItem.likes : 0} Likes</p>
             <div class="heart"></div>
         </div>
       </div>

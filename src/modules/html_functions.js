@@ -3,7 +3,7 @@ import InvolvementAPI from './involvement_api.js';
 
 const colorsArray = [
   '#005F99',
-  '#D22779',
+  '#172774',
   '#7900FF',
   '#1E3163',
   '#1DB9C3',

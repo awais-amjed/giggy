@@ -180,4 +180,4 @@ const programmingJokesButtonListener = async () => {
   await populateJokes({ category: 'Programming' });
 };
 
-export { populateJokes, darkJokesButtonListener, programmingJokesButtonListener };
+export { populateJokes, darkJokesButtonListener, programmingJokesButtonListener, countAllItems };

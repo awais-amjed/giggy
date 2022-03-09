@@ -1,0 +1,34 @@
+export default class InvolvementAPI {
+  static baseURL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps';
+
+  // static appID = 'UDoWa8zVty29gxAuSZ13';
+  static appID = 'rIad9hF9lO1yv2bMdKPx';
+
+  static postLike = async ({ itemID = null }) => {
+    if (itemID === null) {
+      return null;
+    }
+
+    return fetch(`${this.baseURL}/${this.appID}/likes/`, {
+      method: 'POST',
+      body: JSON.stringify({
+        item_id: itemID,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    }).then((response) => response.status === 201);
+  }
+
+  static getLikes = async () => fetch(`${this.baseURL}/${this.appID}/likes/`, {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  }).then((response) => {
+    if (response.status === 200) {
+      return response.json();
+    }
+    return null;
+  });
+}

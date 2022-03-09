@@ -1,4 +1,5 @@
 import JokeAPI from './joke_api.js';
+import handleComment from './comments_controller.js';
 
 const colorsArray = [
   '#005F99',
@@ -50,25 +51,26 @@ const populateJokes = async ({ category = 'Dark' }) => {
   jokesListNode.innerHTML = '';
 
   let i = 0;
-  jokes.forEach(({ setup, delivery, joke }) => {
+  jokes.forEach((joke) => {
     const jokeContainer = document.createElement('div');
     jokeContainer.classList.add('joke-container', 'col-lg-4', 'col-md-6', 'col-xxl-3');
 
     const jokeNode = document.createElement('div');
     jokeNode.classList.add('joke-card');
-    jokeNode.style['background-color'] = newColors[i];
+    const color = newColors[i];
+    jokeNode.style['background-color'] = color;
 
     jokeContainer.appendChild(jokeNode);
     jokeNode.innerHTML = `
       <div class="joke-text">
-        ${joke ? `<p>${joke.replaceAll('\n', '<br>')}</p>` : `<p>${setup}</p><p>${delivery}</p>`}
+        ${joke.joke ? `<p>${joke.joke.replaceAll('\n', '<br>')}</p>` : `<p>${joke.setup}</p><p>${joke.delivery}</p>`}
         <hr>
       </div>
     `;
 
     const commentsButton = document.createElement('button');
     commentsButton.innerText = 'Comments';
-
+    commentsButton.onclick = async () => handleComment(joke, color);
     jokeNode.appendChild(commentsButton);
     jokesListNode.appendChild(jokeContainer);
     i += 1;

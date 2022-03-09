@@ -1,5 +1,7 @@
 import JokeAPI from './joke_api.js';
 import handleComment from './comments_controller.js';
+import InvolvementAPI from './involvement_api.js';
+
 
 const colorsArray = [
   '#005F99',
@@ -52,6 +54,7 @@ const populateJokes = async ({ category = 'Dark' }) => {
 
   let i = 0;
   jokes.forEach((joke) => {
+
     const jokeContainer = document.createElement('div');
     jokeContainer.classList.add('joke-container', 'col-lg-4', 'col-md-6', 'col-xxl-3');
 
@@ -61,10 +64,15 @@ const populateJokes = async ({ category = 'Dark' }) => {
     jokeNode.style['background-color'] = color;
 
     jokeContainer.appendChild(jokeNode);
+
+    const currentItem = InvolvementAPI.itemLikes.find((item) => item.item_id === id);
     jokeNode.innerHTML = `
       <div class="joke-text">
         ${joke.joke ? `<p>${joke.joke.replaceAll('\n', '<br>')}</p>` : `<p>${joke.setup}</p><p>${joke.delivery}</p>`}
         <hr>
+        <div class="likes-container">
+            <p>${currentItem ? currentItem.likes : 0} Likes</p>
+        </div>
       </div>
     `;
 

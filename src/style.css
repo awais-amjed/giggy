@@ -244,12 +244,33 @@ textarea {
   font-weight: bold;
 }
 
+.heart {
+  width: 100px;
+  height: 80px;
+  background: url("https://cssanimation.rocks/images/posts/steps/heart.png");
+  background-size: auto;
+  cursor: pointer;
+  transition: background-position 1s steps(28);
+  transition-duration: 0s;
+  transform: translate(20px, -30px);
+}
+
+.is-heart-active {
+  transition-duration: 1s;
+  background-position: -2800px 0;
+}
+
+.joke-card:hover {
+  transform: scale(1.05);
+}
+
 .likes-container p {
   margin-top: 10px;
   letter-spacing: 2px;
 }
 
 footer {
+  padding: 0 10%;
   z-index: 1;
   background-color: #bdbdbd;
   position: fixed;
@@ -259,7 +280,7 @@ footer {
   display: flex;
   width: 100%;
   height: 50px;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   box-shadow: 0 -4px 4px 0 rgba(0, 0, 0, 0.1);
 }
@@ -275,6 +296,24 @@ footer {
 
 .loading-image-comment {
   height: 10vh;
+}
+
+#popup {
+  display: none;
+  position: fixed;
+  padding: 15px;
+  z-index: 3;
+  bottom: 10px;
+  right: 10px;
+  background-color: #78127c;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+}
+
+#popup p {
+  margin: auto;
+  text-align: center;
+  color: white;
 }
 
 @media (max-width: 768px) {

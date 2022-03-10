@@ -95,7 +95,7 @@ button:active {
   margin: auto;
   padding: 20px;
   width: 80%;
-  height: 80vh;
+  height: 100%;
   border-radius: 20px;
   max-width: 1000px;
   overflow-y: auto;

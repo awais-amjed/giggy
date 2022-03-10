@@ -1,4 +1,6 @@
 export default class JokeAPI {
+  // This class handles all calls to Joke API
+
   static baseURL = 'https://v2.jokeapi.dev/joke/';
 
   static blacklistFlags = 'blacklistFlags=nsfw,religious,political,racist,sexist,explicit';

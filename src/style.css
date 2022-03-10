@@ -1,0 +1,368 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins&display=swap");
+
+body {
+  font-family: "League Spartan", sans-serif;
+  margin-inline: 10%;
+  background-color: antiquewhite;
+}
+
+header {
+  padding: 0 10%;
+  position: fixed;
+  z-index: 1;
+  display: flex;
+  inset: 0;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  background-color: #bdbdbd;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 0 15px grey;
+}
+
+a {
+  text-decoration: none;
+}
+
+footer a {
+  margin: 5px;
+}
+
+footer p {
+  padding: 0;
+  margin: 0;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: 3px solid black;
+  background-color: white;
+  box-shadow: 3px 3px black;
+  transition: 300ms;
+}
+
+form button {
+  height: 35px;
+  width: 200px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 10px 50px;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+button:active {
+  transform: scale(0.9);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.logo-container .logo {
+  width: 50px;
+  height: 50px;
+  background: url(img/logo.png);
+  background-size: contain;
+  cursor: pointer;
+}
+
+.comment-pop {
+  display: none;
+  position: fixed;
+  z-index: 2;
+  padding-block: 20px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.comment-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  width: 80%;
+  height: 100%;
+  border-radius: 8px;
+  max-width: 1000px;
+  overflow-y: auto;
+}
+
+.comment-content::-webkit-scrollbar {
+  width: initial;
+}
+
+.comment-content::-webkit-scrollbar-track {
+  background-color: initial;
+}
+
+.comment-content::-webkit-scrollbar-thumb {
+  box-shadow: initial;
+}
+
+.close-btn {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.comments-joke-card {
+  border-radius: 20px;
+  background-color: beige;
+  width: 60%;
+  margin: 50px auto;
+}
+
+.joke {
+  color: #000;
+  margin: auto;
+  padding: 20px;
+  font-size: 34px;
+  font-weight: 500;
+}
+
+.info-text {
+  text-align: center;
+  color: #fefefe;
+}
+
+.joke-title {
+  text-align: center;
+  margin: 10px;
+  font-size: 28px;
+  font-weight: 500;
+  align-self: flex-start;
+  color: #fefefe;
+}
+
+.info-card {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  width: 60%;
+  align-items: center;
+  margin: auto;
+}
+
+ul {
+  list-style: none;
+  text-align: center;
+  margin: 20px;
+  color: white;
+}
+
+li {
+  margin-top: 10px;
+  color: #fefefe;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  margin: 10px;
+  border-radius: 5px;
+  height: 35px;
+  border: 3px solid black;
+  padding: 10px 15px;
+  width: 300px;
+}
+
+textarea {
+  margin: 10px;
+  border-radius: 5px;
+  border: 3px solid black;
+  padding: 10px 15px;
+  width: 300px;
+}
+
+.logo-container h1 {
+  font-family: "Permanent Marker", cursive;
+}
+
+.navigation-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.active {
+  background-color: black;
+  color: white;
+}
+
+#jokes-list {
+  margin: 100px 0 100px;
+}
+
+.joke-card {
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 15px 30px 1px grey;
+  border-radius: 10px;
+  padding: 30px;
+  transition: 300ms;
+}
+
+.joke-container {
+  padding: 15px;
+}
+
+.joke-card hr {
+  width: 100%;
+}
+
+.joke-text {
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.likes-container {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+  font-weight: bold;
+}
+
+.heart {
+  width: 100px;
+  height: 80px;
+  background: url("https://cssanimation.rocks/images/posts/steps/heart.png");
+  background-size: auto;
+  cursor: pointer;
+  transition: background-position 1s steps(28);
+  transition-duration: 0s;
+  transform: translate(20px, -30px);
+}
+
+.is-heart-active {
+  transition-duration: 1s;
+  background-position: -2800px 0;
+}
+
+.joke-card:hover {
+  transform: scale(1.05);
+}
+
+.likes-container p {
+  margin-top: 10px;
+  letter-spacing: 2px;
+}
+
+footer {
+  padding: 0 10%;
+  z-index: 1;
+  background-color: #bdbdbd;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  width: 100%;
+  height: 50px;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 -4px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.loading-image,
+.loading-image-comment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 80vh;
+  justify-content: center;
+}
+
+.loading-image-comment {
+  height: 10vh;
+}
+
+#popup {
+  display: none;
+  position: fixed;
+  padding: 15px;
+  z-index: 3;
+  bottom: 10px;
+  right: 10px;
+  background-color: #78127c;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+}
+
+#popup p {
+  margin: auto;
+  text-align: center;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .comment-content {
+    width: 95%;
+    height: 100%;
+  }
+
+  .joke {
+    font-size: 24px;
+  }
+
+  .comments-joke-card {
+    width: 80%;
+  }
+
+  .info-card {
+    width: 90%;
+  }
+
+  header {
+    height: 140px;
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  #jokes-list {
+    margin: 160px 0 100px;
+  }
+}

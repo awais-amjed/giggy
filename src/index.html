@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Giggy</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap"
+		rel="stylesheet">
+</head>
+<body>
+	<header class="animate__animated animate__slideInDown animate__fast">
+		<div class="logo-container">
+			<div class="logo"></div>
+			<h1>Giggy</h1>
+		</div>
+		<div class="navigation-links">
+			<button type="button" class="active" id="dark-jokes-button">Dark Jokes</button>
+			<button type="button" id="programming-jokes-button">Programming Jokes</button>
+		</div>
+	</header>
+
+	<div id="comment-view" class="comment-pop">
+		<div class="comment-content" id="comment-content"></div>
+	</div>
+
+	<main>
+		<section id="jokes-list" class="row">
+		</section>
+	</main>
+
+	<footer class="animate__animated animate__slideInUp animate__fast">
+		<p>Created by
+			<a href="https://github.com/awais-amjed" target="_blank" rel="noopener noreferrer">@Awais</a>
+			& <a href="https://github.com/Bavon101" target="_blank" rel="noopener noreferrer">@Bavon</a>
+			 under MIT License.
+		</p>
+		<p id="joke-count" class="animate__animated animate__faster">Joke Count: 0</p>
+	</footer>
+
+	<div id="popup" class="animate__animated animate__fast">
+		<p></p>
+	</div>
+</body>
+</html>

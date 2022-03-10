@@ -1,4 +1,4 @@
-import Comments from './comments.js';
+import InvolvementAPI from './involvement_api.js';
 
 const commentSection = document.getElementById('comment-view');
 const commentsBody = document.getElementById('comment-content');
@@ -10,7 +10,6 @@ const addListItem = (comment) => {
 };
 
 const createComments = async (id, exists = false) => {
-  const comments = new Comments();
   const commentList = exists ? document.getElementById('comments-list') : document.createElement('ul');
   if (!exists) {
     commentList.setAttribute('id', 'comments-list');
@@ -29,14 +28,14 @@ const createComments = async (id, exists = false) => {
   if (!exists) {
     commentsBody.appendChild(commentList);
   }
-  await comments.get(id);
+  await InvolvementAPI.getComments(id);
   loading.remove();
-  if (comments.comments.length > 0) {
-    comments.comments.map((comment) => addListItem(comment));
+  if (InvolvementAPI.comments.length > 0) {
+    InvolvementAPI.comments.map((comment) => addListItem(comment));
   } else {
     commentList.innerHTML = 'No comments have been made';
   }
-  document.getElementById('comments-title').innerHTML = `Comments(${comments.commentCount()})`;
+  document.getElementById('comments-title').innerHTML = `Comments(${InvolvementAPI.commentCount()})`;
 };
 
 const createCloseIcon = () => {
@@ -48,13 +47,12 @@ const createCloseIcon = () => {
 };
 
 const addComment = async (id) => {
-  const comments = new Comments();
   const comment = {
     item_id: id,
     username: document.getElementById('name').value,
     comment: document.getElementById('comment').value,
   };
-  await comments.add(comment);
+  await InvolvementAPI.addComment(comment);
   createComments(id, true);
 };
 const createForm = (id) => {
@@ -85,16 +83,12 @@ const handleComment = async (joke, color) => {
   jokeCard.style.backgroundColor = 'white';
   jokeCard.innerHTML = `${joke.joke ? `<p class="joke">${joke.joke.replaceAll('\n', '<br>')}</p>` : `<p class="joke" >${joke.setup}</p><p class="joke">${joke.delivery}</p>`}`;
   commentsBody.appendChild(jokeCard);
-  const title = document.createElement('p');
-  title.classList.add('joke-title');
-  title.innerHTML = 'Joke title';
-  commentsBody.appendChild(title);
-  const inforCard = document.createElement('div');
-  inforCard.classList.add('info-card');
-  inforCard.innerHTML = `<p class="info-text">Category:${joke.category}</p><p class="info-text">Type: ${joke.type}</p>
+  const infoCard = document.createElement('div');
+  infoCard.classList.add('info-card');
+  infoCard.innerHTML = `<p class="info-text">Category:${joke.category}</p><p class="info-text">Type: ${joke.type}</p>
 <p class="info-text">Safe: ${joke.safe}</p>
 <p class="info-text">lang: English</p>`;
-  commentsBody.appendChild(inforCard);
+  commentsBody.appendChild(infoCard);
   const commentsTitle = document.createElement('p');
   commentsTitle.classList.add('joke-title');
   commentsTitle.setAttribute('id', 'comments-title');

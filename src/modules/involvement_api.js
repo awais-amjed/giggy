@@ -4,9 +4,38 @@ export default class InvolvementAPI {
   static baseURL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps';
 
   static appID = 'UDoWa8zVty29gxAuSZ13';
-  // static appID = 'rIad9hF9lO1yv2bMdKPx';
 
   static itemLikes = [];
+
+  static comments = [];
+
+  static addComment = async (comment = {}, id = null) => {
+    const results = await fetch(`${this.baseURL}/${this.appID}/comments`, {
+      method: 'POST',
+      body: JSON.stringify(comment),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+    if (id != null) {
+      await this.getComments(id);
+    }
+    return results;
+  };
+
+  static getComments = async (id) => {
+    try {
+      const data = await fetch(`${this.baseURL}/${this.appID}/comments?item_id=${id}`, { method: 'GET' });
+      if (data.ok) {
+        this.comments = await data.json();
+      }
+    } catch (e) {
+      return [];
+    }
+    return this.comments;
+  };
+
+  static commentCount = () => (this.comments.length === undefined ? 0 : this.comments.length);
 
   static postLike = async ({ itemID = null }) => {
     if (itemID === null) {

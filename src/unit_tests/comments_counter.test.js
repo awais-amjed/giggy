@@ -1,6 +1,5 @@
-import Comments from '../modules/comments.js';
+import InvolvementAPI from '../modules/involvement_api.js';
 
-const comments = new Comments();
 const mockData = [
   {
     comment: 'This is nice!',
@@ -19,8 +18,8 @@ global.fetch = jest.fn(() => Promise.resolve({
 
 describe('Get comments the the length', () => {
   test('2 Comment added count should be 2', async () => {
-    await comments.get('test');
+    await InvolvementAPI.getComments('test');
 
-    expect(comments.commentCount()).toBe(2);
+    expect(InvolvementAPI.commentCount()).toBe(2);
   });
 });

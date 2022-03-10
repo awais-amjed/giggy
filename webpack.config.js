@@ -13,7 +13,7 @@ module.exports = {
   output: {
     clean: true,
   },
-  mode: 'none',
+  mode: 'production',
   module: {
     rules: [
       {

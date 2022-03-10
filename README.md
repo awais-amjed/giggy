@@ -20,7 +20,7 @@ This is a Web Application with some jokes related to coding & Dark Humor. Create
 
 ## Live Demo
 
-[Live Demo Link](https://awais-amjed.github.io/leaderboard/)
+[Live Demo Link](https://awais-amjed.github.io/giggy/)
 
 ## Getting Started
 

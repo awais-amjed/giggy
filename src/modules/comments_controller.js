@@ -83,10 +83,6 @@ const handleComment = async (joke, color) => {
   jokeCard.style.backgroundColor = 'white';
   jokeCard.innerHTML = `${joke.joke ? `<p class="joke">${joke.joke.replaceAll('\n', '<br>')}</p>` : `<p class="joke" >${joke.setup}</p><p class="joke">${joke.delivery}</p>`}`;
   commentsBody.appendChild(jokeCard);
-  const title = document.createElement('p');
-  title.classList.add('joke-title');
-  title.innerHTML = 'Joke title';
-  commentsBody.appendChild(title);
   const infoCard = document.createElement('div');
   infoCard.classList.add('info-card');
   infoCard.innerHTML = `<p class="info-text">Category:${joke.category}</p><p class="info-text">Type: ${joke.type}</p>

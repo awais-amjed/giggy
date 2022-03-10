@@ -24,8 +24,14 @@ export default class InvolvementAPI {
   };
 
   static getComments = async (id) => {
-    const data = await fetch(`${this.baseURL}/${this.appID}/comments?item_id=${id}`, { method: 'GET' });
-    this.comments = await data.json();
+    try {
+      const data = await fetch(`${this.baseURL}/${this.appID}/comments?item_id=${id}`, { method: 'GET' });
+      if (data.ok) {
+        this.comments = await data.json();
+      }
+    } catch (e) {
+      return [];
+    }
     return this.comments;
   };
 

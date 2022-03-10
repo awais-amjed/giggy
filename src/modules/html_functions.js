@@ -33,6 +33,8 @@ const shuffle = (array) => {
 const countAllItems = () => document.getElementById('jokes-list').querySelectorAll('.joke-card').length;
 
 const showJokeCount = () => {
+  // Displays the Total number of Jokes in Footer
+
   const jokeCount = document.getElementById('joke-count');
   jokeCount.classList.remove('animate__zoomIn');
   setTimeout(() => {
@@ -42,6 +44,8 @@ const showJokeCount = () => {
 };
 
 export const showPopup = (error) => {
+  // Displays a popup with an error
+
   const popup = document.getElementById('popup');
   if (error) {
     popup.querySelector('p').textContent = error;
@@ -58,6 +62,7 @@ export const showPopup = (error) => {
 
 const updateItemLikes = async ({ likesContainer = null, id = null }) => {
   // Increases the like amount of an item by 1
+
   if (likesContainer === null || id === null) {
     return;
   }
@@ -78,6 +83,7 @@ const updateItemLikes = async ({ likesContainer = null, id = null }) => {
 
 const heartButtonListener = async ({ likesContainer = null, id = null }) => {
   // Update the number of likes of an Item & Save it to Cloud
+
   if (likesContainer === null || id === null) {
     return;
   }
@@ -180,4 +186,6 @@ const programmingJokesButtonListener = async () => {
   await populateJokes({ category: 'Programming' });
 };
 
-export { populateJokes, darkJokesButtonListener, programmingJokesButtonListener };
+export {
+  populateJokes, darkJokesButtonListener, programmingJokesButtonListener, countAllItems,
+};

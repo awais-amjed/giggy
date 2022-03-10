@@ -1,8 +1,10 @@
 export default class InvolvementAPI {
+  // This class handles all calls to Involvement API
+
   static baseURL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps';
 
-  // static appID = 'UDoWa8zVty29gxAuSZ13';
-  static appID = 'rIad9hF9lO1yv2bMdKPx';
+  static appID = 'UDoWa8zVty29gxAuSZ13';
+  // static appID = 'rIad9hF9lO1yv2bMdKPx';
 
   static itemLikes = [];
 
@@ -29,7 +31,13 @@ export default class InvolvementAPI {
     },
   }).then(async (response) => {
     if (response.status === 200) {
-      this.itemLikes = await response.json();
+      let data = [];
+      try {
+        data = await response.json();
+      } catch (e) {
+        return null;
+      }
+      this.itemLikes = data;
       return true;
     }
     return null;

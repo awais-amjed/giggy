@@ -35,11 +35,11 @@ A Web Browser (preferably Google Chrome)
 - Clone the GitHub Repository
 - Go to the Project Directory
 - Run ```npm install```
-- Run ```npm build``` to build the project
+- Run ```npm run build``` to build the project
 
 ### Usage
 
-- Run ```npm dev``` to start the live server
+- Run ```npm run dev``` to start the live server
 
 ## Authors
 

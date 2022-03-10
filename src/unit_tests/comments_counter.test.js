@@ -1,4 +1,4 @@
-import Comments from '../src/modules/comments.js';
+import Comments from '../modules/comments.js';
 
 const comments = new Comments();
 const mockData = [

@@ -3,6 +3,7 @@ import './style.css';
 import { populateJokes, darkJokesButtonListener, programmingJokesButtonListener } from './modules/html_functions.js';
 import 'animate.css';
 
+import './img/logo.png';
 import './img/loading.gif';
 
 const init = async () => {

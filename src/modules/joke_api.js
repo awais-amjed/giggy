@@ -6,12 +6,12 @@ export default class JokeAPI {
   static blacklistFlags = 'blacklistFlags=nsfw,religious,political,racist,sexist,explicit';
 
   static jokeCategories = {
-    dark: ['Dark', 'idRange=0-140'],
-    programming: ['Programming', 'idRange=0-11'],
+    dark: 'Dark',
+    programming: 'Programming',
   }
 
   static getJokes = ({ category = this.jokeCategories.dark }) => fetch(`
-  ${this.baseURL}/${category[0]}?${this.blacklistFlags}&${category[1]}&amount=10
+  ${this.baseURL}/${category}?${this.blacklistFlags}&amount=10
   `, {
     method: 'GET',
     headers: {

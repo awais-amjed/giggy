@@ -10,7 +10,7 @@ export default class JokeAPI {
     programming: 'Programming',
   }
 
-  static getJokes = ({ category = this.jokeCategories.dark }) => fetch(`
+  static getJokes = async ({ category = this.jokeCategories.dark }) => fetch(`
   ${this.baseURL}/${category}?${this.blacklistFlags}&amount=10
   `, {
     method: 'GET',
@@ -19,9 +19,15 @@ export default class JokeAPI {
     },
   }).then(async (response) => {
     if (response.status === 200) {
-      const data = await response.json();
-      return data.jokes;
+      try {
+        const data = await response.json();
+        return data.jokes;
+      } catch (e) {
+        return null;
+      }
     }
+    return null;
+  }).catch(() => {
     return null;
   });
 }

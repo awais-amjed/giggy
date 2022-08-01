@@ -116,7 +116,7 @@ const populateJokes = async ({ category = 'Dark', getLikes = false }) => {
   }
 
   const newColors = shuffle(colorsArray);
-  let jokes = [];
+  let jokes = null;
 
   if (category === 'Dark') {
     jokes = await JokeAPI.getJokes({ category: JokeAPI.jokeCategories.dark });
@@ -124,7 +124,15 @@ const populateJokes = async ({ category = 'Dark', getLikes = false }) => {
     jokes = await JokeAPI.getJokes({ category: JokeAPI.jokeCategories.programming });
   }
 
-  jokesListNode.innerHTML = '';
+  if (jokes) {
+    jokesListNode.innerHTML = '';
+  } else {
+    jokesListNode.innerHTML = `
+    <div class="loading-image col-12">
+        <img src="./img/error500.png" alt="" height="100px">
+    </div>
+  `;
+  }
 
   let i = 0;
   jokes.forEach((joke) => {

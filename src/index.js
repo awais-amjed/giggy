@@ -5,6 +5,7 @@ import 'animate.css';
 
 import './img/logo.png';
 import './img/loading.gif';
+import './img/error500.png';
 
 const init = async () => {
   await populateJokes({ category: 'Dark', getLikes: true });
